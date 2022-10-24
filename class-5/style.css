@@ -1,0 +1,14 @@
+/* .elem h2{
+    color: #000;
+    background: yellow;
+    padding: 14px;
+    display: inline;
+    transition: background 2s,padding 1s,color 3s,display 4s;
+}
+
+.elem h2:hover{
+    background: green;
+    color: white;
+    padding: 50px;
+    display: block;
+} */
