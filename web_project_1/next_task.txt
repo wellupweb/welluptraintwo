@@ -1,0 +1,8 @@
+font-size 
+middle
+color
+font-family
+background
+hover:background
+transition
+padding
