@@ -1,8 +1,12 @@
-font-size 
-middle
-color
-font-family
-background
+h2>font-size *
+p>font-size *
+h2>color *
+p>color *
+
+align-center->both *
+font-family->both *
+
+background *
 hover:background
 transition
-padding
+padding *
