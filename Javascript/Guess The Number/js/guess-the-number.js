@@ -1,5 +1,7 @@
 var currentNumber = generateNumber();
-console.log(currentNumber);
+var guesses = [];
+
+console.log("refresh",currentNumber);
 
 function generateNumber(){
     var randomNumber = Math.random() * 100 // Get value Within 100;
@@ -10,6 +12,17 @@ function generateNumber(){
 }
 
 document.getElementById("check-number").addEventListener('click',play);
+document.getElementById("reset").addEventListener('click',resetGame)
+
+function resetGame(){
+    currentNumber = generateNumber();
+    console.log("reset",currentNumber);
+    document.getElementById("result").innerHTML = "";
+    document.getElementById("guess-number").value = "";
+    guesses = [];
+    displayHistory();
+}
+
 function play(){
     var numberGuess = document.getElementById("guess-number").value ;
     if(numberGuess > currentNumber){
@@ -29,4 +42,31 @@ function play(){
         </div>`;
 
     }
+
+    saveHistory(numberGuess);
+
+    displayHistory();
+
+
 }
+
+function saveHistory(guess){
+   guesses.push(guess)
+   console.log(guesses);
+ 
+}
+
+function displayHistory(){
+    var i = 0;
+    var list = `<ul class="list-group"> `;
+    while( i < guesses.length){
+        list += `<li class="list-group-item"> You Guessed ${guesses[i]}</li>`
+        i++;
+    }
+    list += `</ul>`;
+
+    document.getElementById("history").innerHTML = list;
+    
+}
+
+
