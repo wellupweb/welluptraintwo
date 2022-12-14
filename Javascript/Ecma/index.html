@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecma Script</title>
+</head>
+<body>
+    <div id="result">
+
+    </div>
+
+    <script>
+        var x = 10;
+        let y = 20;
+        const z = 30; // Unchangable
+
+        // console.log("Its x ", x);
+        // console.log("Its y ", y);
+        // console.log("Its z ", z);
+
+        x = 110;
+        y = 120;
+        // z = 130;
+
+        // console.log("Its x ", x)
+        // console.log("Its y ",y)
+        // console.log("Its z ",z)
+
+        function getFirstName(firstName = "Messi"){
+            var check = true;
+
+            if(check == true){
+                var firstName = "Hello";
+                let lastName = "World";
+
+                console.log("My lastName in scope is : " + lastName)
+            }
+
+            console.log("My firstName is : " + firstName)
+            // console.log("My lastName is : " + lastName)
+        }
+
+        let getFirstAndLastName = function (firstName = "Messi",lastName){
+            console.log("Firstname: " + firstName )
+            console.log("lastname: " + lastName )
+        }
+
+        let getTheWorld = (firstName="Messi") => {
+            console.log("From Arrow " )
+            console.log("Firstname: " + firstName )
+        } // Arrow
+
+        // getFirstName();
+        // getFirstAndLastName("Ankara","Me ssi");
+        // getTheWorld("Neymar");
+
+        let countries = ["Brazil","Argentina","New York"]
+
+        // for (let i = 0; i < countries.length; i++) {
+        //    console.log(countries[i]);
+        // }
+        
+        // countries.forEach((country) => {
+        //     console.log(country);
+        // })
+
+        // countries.map((country) => {
+        //     console.log(country);
+        // })
+
+        // let promise = new Promise((resolve,reject) => {
+        //     setTimeout(() => {
+        //         resolve({
+        //             name: "Messi",
+        //             age : "35"
+        //         })   
+        //     },
+        //     3000)
+            
+        // })
+
+        // promise.then(response => {
+        //     console.log("Promise Trigerred");
+        //     console.log(response)
+        // })
+
+        // console.log("Hello world");
+        // console.log("Hello world 2");
+        // console.log("Hello world 3");
+
+        let posts = fetch("https://jsonplaceholder.typicode.com/posts")
+        
+        posts.then(response =>{
+            return response.json()
+        }).then(result => {
+            let list = "<ul>";
+            result.map((r) => {
+                list += `<li> ${r.title}  <p> ${r.body} </p></li>`
+            })
+            list += "</u>"
+
+            document.getElementById('result').innerHTML = list;
+        })
+        
+        console.log("Done");
+
+
+    </script>
+</body>
+</html>
