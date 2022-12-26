@@ -9,13 +9,14 @@
     }
 ?>
 
+
 <!-- <h4>Server</h4> -->
-<?php //echo $_SERVER["PHP_SELF"] . "<br>"; ?>
-<?php // echo $_SERVER["SERVER_ADDR"] . "<br>"; ?>
-<?php //echo $_SERVER["SERVER_NAME"] . "<br>"; ?>
-<?php //echo $_SERVER["SERVER_SOFTWARE"] . "<br>"; ?>
-<?php //echo $_SERVER["SERVER_PROTOCOL"] . "<br>"; ?>
-<?php //echo $_SERVER["SERVER_PORT"] . "<br>"; ?>
+<?php  // echo $_SERVER["PHP_SELF"] . "<br>"; ?>
+<?php   //echo $_SERVER["SERVER_ADDR"] . "<br>"; ?>
+<?php   //echo $_SERVER["SERVER_NAME"] . "<br>"; ?>
+<?php  // echo $_SERVER["SERVER_SOFTWARE"] . "<br>"; ?>
+<?php   //echo $_SERVER["SERVER_PROTOCOL"] . "<br>"; ?>
+<?php  // echo $_SERVER["SERVER_PORT"] . "<br>"; ?>
 
 <h4> Request Super Global Variable </h4>
 
