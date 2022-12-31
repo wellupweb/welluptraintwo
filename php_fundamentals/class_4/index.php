@@ -3,13 +3,23 @@
     $fullname = $age = $email = $website = $comment = "";
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $fullname = $_POST['fullname'];
-        $age = $_POST['age'];
-        $email = $_POST['email'];
-        $website = $_POST['website'];
-        $comment = $_POST['comment'];
-        
+       
+        $fullname =  validate($_POST['fullname']);
+        $age = validate($_POST['age']);
+        $email = validate($_POST['email']);
+        $website = validate($_POST['website']);
+        $comment = validate($_POST['comment']);
+      
+      
     }
+
+    function validate($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }   
+    
 
 ?>
 
@@ -29,7 +39,7 @@
     <div class="container">
 
     <ul class="list-group mb-3">
-        <li class="list-group-item"> Fullname : <?php echo $fullname ?></li>
+        <li class="list-group-item"> Fullname : <?php echo $fullname ?>
         <li class="list-group-item">Age : <?php echo $age ?></li>
         <li class="list-group-item">Email : <?php echo $email ?></li>
         <li class="list-group-item">Website : <?php echo $website ?></li>
@@ -39,7 +49,7 @@
 
     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
         <div class="mb-3">
-            <label for="fullname" class="form-label">Full Name</label>
+            <label for="fullname" class="form-label">Full Name &copy;</label>
             <input type="text" class="form-control" name="fullname" id="fullname">
         </div>
 
