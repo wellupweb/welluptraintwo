@@ -10,7 +10,7 @@
         echo "The sum is " .$calc->add() . "<br>";
         // echo "The subs is " .$calc->subs($numberone,$numbertwo) . "<br>";
         // echo "The multi is " .$calc->multi($numberone,$numbertwo) . "<br>";
-         echo "The divi is " .$calc->divi() . "<br>";
+        //  echo "The divi is " .$calc->divi() . "<br>";
        
     }
 
