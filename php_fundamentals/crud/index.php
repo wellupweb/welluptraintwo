@@ -1,18 +1,33 @@
 <?php
-    if($_SERVER['REQUEST_METHOD'] == "POST" ){
-        $fname = $_POST["fname"];
-        $lname = $_POST["lname"];
-        
-        $link = new mysqli("localhost","root","","mips");
-        $insert_row = $link->query("insert into info(firstname,lastname) values('$fname','$lname')"); 
 
-        if($insert_row){
-            echo "Inserted Successfully";
-        }else{
-            echo "insert into info(firstname,lastname) values($fname,$lname)";
-            die();
-        }
+$link = new mysqli("localhost", "root", "", "mips");
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $fname = $_POST["fname"];
+    $lname = $_POST["lname"];
+
+    $insert_row = $link->query("insert into info(firstname,lastname) values('$fname','$lname')");
+    if ($insert_row) {
+        echo "Inserted Successfully";
+    } else {
+        echo "insert into info(firstname,lastname) values($fname,$lname)";
+        die();
     }
+}
+
+
+$table_data = $link->query("select * from info ");
+// if($table_data->num_rows > 0 ){
+//     echo "<pre>";
+//     // var_dump($table_data->fetch_all());
+//     var_dump($table_data->fetch_assoc());
+//     var_dump($table_data->fetch_assoc());
+//     var_dump($table_data->fetch_assoc());
+//     echo "</pre>";
+//     die();
+// }
+
+
+
 
 
 ?>
@@ -40,6 +55,29 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $i = 0;
+                while($result = $table_data->fetch_assoc()){ 
+                $i++;    
+                ?>
+                <tr>
+                    <th scope="row"><?php echo $i; ?></th>
+                    <td><?php echo $result["firstname"]; ?></td>
+                    <td><?php echo $result["lastname"]; ?></td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
 </body>
 
