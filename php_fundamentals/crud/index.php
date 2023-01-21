@@ -40,6 +40,7 @@ $table_data = $link->query("select * from info ");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crud</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -62,6 +63,7 @@ $table_data = $link->query("select * from info ");
                     <th scope="col">#</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,9 +73,12 @@ $table_data = $link->query("select * from info ");
                 $i++;    
                 ?>
                 <tr>
-                    <th scope="row"><?php echo $i; ?></th>
+                    <th scope="row"><?php echo $i ; ?></th>
                     <td><?php echo $result["firstname"]; ?></td>
                     <td><?php echo $result["lastname"]; ?></td>
+                    <td>
+                        <a href="edit.php?info_id=<?php echo $result['id']; ?>" class="btn btn-success"><i class="bi bi-pencil"></i></a>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>
