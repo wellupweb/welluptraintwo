@@ -7,6 +7,33 @@
 
     }
 
+    if(isset($_GET['success']) && $_GET['success'] == 1){
+        echo "Updated Successfully";
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $fname = $_POST["fname"];
+        $lname = $_POST["lname"];
+        $id = $_POST["info_id"];
+    
+        $update_row = $link->query("
+        update info set
+        firstname = '$fname',
+        lastname = '$lname'
+        where id = $id
+        ");
+        if ($update_row) {
+            header("Location: edit.php?info_id=$id&success=1");
+        } else {
+            echo "update info set
+            firstname = '$fname',
+            lastname = '$lname'
+            where id = $id
+            ";
+            die();
+        }
+    }
+
 
 ?>
 
@@ -23,13 +50,14 @@
 <body>
 <div class="container">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <input type="hidden" name="info_id" value="<?php if(isset($result['id'])){echo $result['id'];}else{ echo ""; }  ?>">
             <div class="mb-3">
                 <label for="firstname" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="firstname" name="fname" value="<?php echo $result['firstname']; ?>">
+                <input type="text" class="form-control" id="firstname" name="fname" value="<?php if(isset($result['firstname'])){echo $result['firstname'];}else{ echo ""; }  ?>">
             </div>
             <div class="mb-3">
                 <label for="lastname" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="lastname" name="lname" value="<?php echo $result['lastname']; ?>">
+                <input type="text" class="form-control" id="lastname" name="lname" value="<?php if(isset($result['lastname'])){echo $result['lastname'];}else{ echo ""; }  ?>">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
