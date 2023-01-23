@@ -1,6 +1,16 @@
 <?php
 
 $link = new mysqli("localhost", "root", "", "mips");
+
+if(isset($_GET['delete'])){
+    $del_id = $_GET['delete'];
+    $delete_row = $link->query("delete from info where id=$del_id");
+    if($delete_row){
+        echo "Deleted Successfully";
+    }
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
@@ -78,6 +88,8 @@ $table_data = $link->query("select * from info ");
                     <td><?php echo $result["lastname"]; ?></td>
                     <td>
                         <a href="edit.php?info_id=<?php echo $result['id']; ?>" class="btn btn-success"><i class="bi bi-pencil"></i></a>
+
+                        <a onclick="return confirm('Are you sure to delete!!')" href="<?php echo $_SERVER['PHP_SELF']; ?>?delete=<?php echo $result['id'] ?>" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 <?php } ?>
