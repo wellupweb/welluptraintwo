@@ -1,6 +1,9 @@
 <?php
 include "./Database.php";
 $db = new Database();
+$table_data = $db->select("select * from info");
+
+var_dump($table_data->fetch_all());
 die();
 
 
@@ -30,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 
-$table_data = $link->query("select * from info ");
 // if($table_data->num_rows > 0 ){
 //     echo "<pre>";
 //     // var_dump($table_data->fetch_all());
