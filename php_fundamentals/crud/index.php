@@ -1,6 +1,11 @@
 <?php
+include "./Database.php";
+$db = new Database();
+die();
+
 
 $link = new mysqli("localhost", "root", "", "mips");
+
 
 if(isset($_GET['delete'])){
     $del_id = $_GET['delete'];
